@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 
+ruby='2.2.1'
 
+# Monitor coverage with coveralls
+gem 'coveralls', require: false
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.1'
 # Use sqlite3 as the database for development and test Active Record
