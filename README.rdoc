@@ -1,8 +1,6 @@
 == README
 
-{<img src="https://codeclimate.com/github/gabriel-augusto/rd_chalange/badges/gpa.svg" />}[https://codeclimate.com/github/gabriel-augusto/rd_chalange]
-
-{<img src="https://travis-ci.org/gabriel-augusto/rd_chalange.svg?branch=devel" alt="Build Status" />}[https://travis-ci.org/gabriel-augusto/rd_chalange]
+{<img src="https://codeclimate.com/github/gabriel-augusto/rd_chalange/badges/gpa.svg" />}[https://codeclimate.com/github/gabriel-augusto/rd_chalange] {<img src="https://travis-ci.org/gabriel-augusto/rd_chalange.svg?branch=devel" alt="Build Status" />}[https://travis-ci.org/gabriel-augusto/rd_chalange] {<img src="https://coveralls.io/repos/github/gabriel-augusto/rd_chalange/badge.svg?branch=devel" alt="Coverage Status" />}[https://coveralls.io/github/gabriel-augusto/rd_chalange?branch=devel]
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
