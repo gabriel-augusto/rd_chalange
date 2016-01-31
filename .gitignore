@@ -46,3 +46,6 @@ bower.json
 # Heroku files
 .env
 
+# Ignoring Gemfile.lock
+Gemfile.lock
+
