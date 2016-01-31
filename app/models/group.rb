@@ -1,17 +1,11 @@
 class Group < ActiveRecord::Base
-  has_many :text_queries
-  has_many :numeric_queries
+  has_many :text_queries, dependent: :destroy
+  has_many :numeric_queries, dependent: :destroy
   belongs_to :segment
 
-  validates_presence_of :segment
-  validates_presence_of :text_queries
-  validates_presence_of :numeric_queries
-
-  validate :query_presence
-
-  private
-  def query_presence
-    errors.add(:text_queries, "query should not be empty in a group") if
-    self.text_queries.nil? and self.numeric_queries.nil?
-  end
+  validates_associated :numeric_queries
+  validates_associated :text_queries
+  # Make queries editable through the groups
+  accepts_nested_attributes_for :numeric_queries, allow_destroy: true
+  accepts_nested_attributes_for :text_queries, allow_destroy: true
 end

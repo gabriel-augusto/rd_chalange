@@ -2,9 +2,8 @@ class TextQuery < ActiveRecord::Base
   include Query
   belongs_to :group
 
-  VALID_CONTACT_ARGUMENTS =  %w( name email state position )
+  VALID_CONTACT_ARGUMENTS =  %w( Name Email State Position )
 
-  validates_presence_of :group
   validates_inclusion_of :contact_argument, in: VALID_CONTACT_ARGUMENTS
   validates_presence_of :value_to_compare
   VALUE_TO_COMPARE_MIN_LENGTH = 1   #characters
