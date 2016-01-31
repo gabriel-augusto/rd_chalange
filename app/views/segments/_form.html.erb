@@ -1,0 +1,71 @@
+<div class="app-form container">
+  <%= nested_form_for @segment, html: {class: "form-horizontal project"} do |f| %>
+    <% if @segment.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@segment.errors.count, "error") %> prohibited this segment from being saved:</h2>
+
+        <ul>
+        <% @segment.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <!-- Get title -->
+    <div class="field center">
+      <%= f.label :title %><br>
+      <%= f.text_field :title %>
+    </div>
+
+    <!-- Get each group information -->
+    <div>
+      <br />
+      <h2>Groups</h2>
+      <br />
+      <!-- Loop while user clicks on "Add a new group". -->
+      <%= f.fields_for :groups do |group_form| %>
+        <div>
+          <hr>
+          <h3>#Group of queries</h3>
+          <div>
+            <%= group_form.fields_for :text_queries do |text_query_form| %>
+              <div>
+                <hr>
+                <h4>#Text Query</h4>
+                <%= text_query_form.select :contact_argument, ["Name", "Email", "State", "Position"] %>
+                <%= "equals" %>
+                <%= text_query_form.text_field :value_to_compare %>
+                <%= text_query_form.link_to_remove "Remove this text query", class: 'btn btn-primary center-block' %>
+              </div>
+            <% end %>
+            <!-- Add a button to create new empty group fields. -->
+            <p><%= group_form.link_to_add "create new text query", :text_queries, class: 'btn btn-default center-block'%></p>
+          </div>
+          <div>
+            <%= group_form.fields_for :numeric_queries do |numeric_query_form| %>
+                <div>
+                  <hr>
+                  <h4>#Numeric Query</h4>
+                  <%= numeric_query_form.select :contact_argument, ["Birth year"] %>
+                  <%= "between" %>
+                  <%= numeric_query_form.number_field :min_value %>
+                  <%= numeric_query_form.number_field :max_value %>
+                  <%= numeric_query_form.link_to_remove "Remove this numeric query", class: 'btn btn-primary center-block' %>
+                </div>
+            <% end %>
+            <!-- Add a button to create new empty group fields. -->
+            <p><%= group_form.link_to_add "create new numeric query", :numeric_queries, class: 'btn btn-default center-block'%></p>
+          </div>
+          <%= group_form.link_to_remove "Remove this group", class: 'btn btn-primary center-block' %>
+        </div>
+      <% end %>
+      <!-- Add a button to create new empty task fields. -->
+      <p><%= f.link_to_add "Add a new group", :groups, class: 'btn btn-default center-block'%></p>
+    </div>
+
+    <div class="actions center">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>

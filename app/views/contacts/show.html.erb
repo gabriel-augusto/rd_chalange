@@ -12,7 +12,12 @@
 
 <p>
   <strong>Age:</strong>
-  <%= @contact.date_of_birth %>
+  <%= @contact.age %>
+</p>
+
+<p>
+  <strong>Date of birth:</strong>
+  <%= "#{@contact.date_of_birth.day} / #{@contact.date_of_birth.month} / #{@contact.date_of_birth.year}" %>
 </p>
 
 <p>
