@@ -2,8 +2,10 @@ source 'https://rubygems.org'
 
 ruby='2.2.1'
 
-# Monitor coverage with coveralls
-gem 'coveralls', require: false
+gem 'puma'
+gem "codeclimate-test-reporter", group: :test, require: nil
+# Datetime validation
+gem 'validates_timeliness', '~> 4.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.1'
 # Use sqlite3 as the database for development and test Active Record
@@ -40,6 +42,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  # Code coverage gem
+  gem 'simplecov', require: false
+
+  gem 'rspec-rails', '~> 3.0'
 end
 
 group :development do

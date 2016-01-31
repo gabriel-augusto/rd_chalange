@@ -1,4 +1,14 @@
 language: ruby
-rvm:
-  - 2.2.1
 
+rvm:
+- 2.2.1
+
+addons:
+  code_climate:
+    repo_token: 6bdd92a5668ab85498d61f36cadb37271e4447e8be04d9c11cc6ba2f4cb55765
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: AKrUwW7/l18wGiU1WJkECRfKZrwMxSh1inIwXfzJ9hnbQqADjrPz2SFVZ2pFVbxEsvkPaGXroRSsna1MkPBsFREv523U31AFIWcUNOM9CUQTgD4UB5XggA0MkP50e0qR3rUAaB5Y4H8Arghjkn9JvJhDCsysTdexratrGBqlEWaFGQ1i55TWANBIGEWDOg4YfKY+LoEL9bZ3uK7R64zrw/40HZVckHzhYtsW7hMMF9vCBkG1NDz+EsWRXmShd+G1KUPQrHZoWALNvCoYhF/hrhQbb95O7H01BOc3Hhxxr1h7JUxilWcFlosYOQJ5VaYkXkmF9ChwSBTcwbCPwdB6LqlIUwmE4xkDmMBL6pBzNyKEWfUy4Q8/l9ZmR4LyNwHN9NHOlQr+YFZ5TeIkUGku5/ooYqckfWnwhfghpJEIFDrq8g9Un0wkb1M95zN2UOxU4+79oOmtxYIBJ+1MXB5uysdZKqDul1NAuA6LtuHR+ghwhyl41WYSPV0m21UwNXiTlYiVurWXggHfO7XNPolGR5tkvGKo3BdfxjWxpl7RO0yZ4djrgHgva+tqrUy/KXkTtOmtlijcV2fvhsOyHpU3RX++1xipbPEa/Z9Hqs7+LgVChlO31Bq286CFF3K+KJX0Y/JeLE1ws4/2XfVLlkCBC7ujK/krajMbkPdU/EKfSJg=
+  run: "rake db:migrate"

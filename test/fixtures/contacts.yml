@@ -3,13 +3,13 @@
 one:
   name: MyString
   email: MyString
-  age: 1
+  date_of_birth: 1
   state: MyString
   position: MyString
 
 two:
   name: MyString
   email: MyString
-  age: 1
+  date_of_birth: 1
   state: MyString
   position: MyString
