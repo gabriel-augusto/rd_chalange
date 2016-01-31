@@ -11,16 +11,59 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160129132335) do
+ActiveRecord::Schema.define(version: 20160129195522) do
 
   create_table "contacts", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
-    t.integer  "age"
+    t.datetime "date_of_birth"
     t.string   "state"
     t.string   "position"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "contacts_segments", id: false, force: :cascade do |t|
+    t.integer "contact_id"
+    t.integer "segment_id"
+  end
+
+  add_index "contacts_segments", ["contact_id"], name: "index_contacts_segments_on_contact_id"
+  add_index "contacts_segments", ["segment_id"], name: "index_contacts_segments_on_segment_id"
+
+  create_table "groups", force: :cascade do |t|
+    t.integer  "segment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "groups", ["segment_id"], name: "index_groups_on_segment_id"
+
+  create_table "numeric_queries", force: :cascade do |t|
+    t.integer  "group_id"
+    t.string   "contact_argument"
+    t.integer  "min_value"
+    t.integer  "max_value"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "numeric_queries", ["group_id"], name: "index_numeric_queries_on_group_id"
+
+  create_table "segments", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "text_queries", force: :cascade do |t|
+    t.integer  "group_id"
+    t.string   "contact_argument"
+    t.string   "value_to_compare"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "text_queries", ["group_id"], name: "index_text_queries_on_group_id"
 
 end
