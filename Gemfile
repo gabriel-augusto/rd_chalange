@@ -1,15 +1,14 @@
 source 'https://rubygems.org'
 
-ruby='2.2.1'
+ruby '2.2.1'
 
-gem 'puma'
 gem "codeclimate-test-reporter", group: :test, require: nil
+# Use puma as the app server
+gem 'puma'
 # Datetime validation
 gem 'validates_timeliness', '~> 4.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.1'
-# Use sqlite3 as the database for development and test Active Record
-gem 'sqlite3'
 # Use postgresql as the database for production Active Record
 gem 'pg'
 # Use SCSS for stylesheets
@@ -44,14 +43,15 @@ group :development, :test do
   gem 'byebug'
   # Code coverage gem
   gem 'simplecov', require: false
-
+  # Use sqlite3 as the database for development and test Active Record
+  gem 'sqlite3'
+  # Use RSpec for test cases
   gem 'rspec-rails', '~> 3.0'
 end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
-
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
