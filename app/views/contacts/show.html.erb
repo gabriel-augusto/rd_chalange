@@ -12,7 +12,12 @@
 
 <p>
   <strong>Age:</strong>
-  <%= @contact.date_of_birth %>
+  <%= @contact.age %>
+</p>
+
+<p>
+  <strong>Date of birth:</strong>
+  <%= "#{@contact.date_of_birth.day} / #{@contact.date_of_birth.month} / #{@contact.date_of_birth.year}" %>
 </p>
 
 <p>
@@ -25,5 +30,5 @@
   <%= @contact.position %>
 </p>
 
-<%= link_to 'Edit', edit_contact_path(@contact) %> |
-<%= link_to 'Back', contacts_path %>
+<%= link_to 'Edit', edit_contact_path(@contact), class: "btn btn-md btn-default" %> |
+<%= link_to 'Back', contacts_path, class: "btn btn-md btn-default" %>

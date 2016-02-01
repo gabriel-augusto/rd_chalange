@@ -20,4 +20,10 @@ class Contact < ActiveRecord::Base
   state_regex = /\A[A-Z]{2}\z/
   validates :state, format: {with: state_regex}
 
+  def age
+    now = Time.now.utc.to_date
+    correction_factor = self.date_of_birth.to_date.change(year: now.year) > now ? 1 : 0
+    now.year - self.date_of_birth.year - correction_factor
+  end
+
 end
