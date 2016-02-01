@@ -47,5 +47,5 @@ bower.json
 .env
 
 # Ignoring Gemfile.lock
-Gemfile.lock
+# Gemfile.lock
 
