@@ -5,5 +5,38 @@
   <%= @segment.title %>
 </p>
 
-<%= link_to 'Edit', edit_segment_path(@segment) %> |
-<%= link_to 'Back', segments_path %>
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Age</th>
+    <th>State</th>
+    <th>Position</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @segment.contacts.each do |contact| %>
+      <tr>
+        <td><%= contact.name %></td>
+        <td><%= contact.email %></td>
+        <td><%= contact.age %></td>
+        <td><%= contact.state %></td>
+        <td><%= contact.position %></td>
+        <td><%= link_to 'Show', contact, class: "btn btn-md btn-default" %></td>
+        <td><%= link_to 'Edit', edit_contact_path(contact), class: "btn btn-md btn-default" %></td>
+        <td><%= link_to 'Destroy',
+                        contact,
+                        method: :delete,
+                        data: { confirm: 'Are you sure?' },
+                        class: "btn btn-md btn-default" %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Edit', edit_segment_path(@segment), class: "btn btn-md btn-default" %> |
+<%= link_to 'Back', segments_path, class: "btn btn-md btn-default" %>
