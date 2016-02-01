@@ -23,6 +23,8 @@ class SegmentsController < ApplicationController
   def new
     begin
       logger.debug "Trying to construct a new Segment object."
+      @text_queries_contact_arguments = TextQuery::VALID_CONTACT_ARGUMENTS
+      @numeric_queries_contact_arguments = NumericQuery::VALID_CONTACT_ARGUMENTS
       @segment = Segment.new
       logger.info "Success constructing a new Segment object."
     rescue
@@ -35,6 +37,8 @@ class SegmentsController < ApplicationController
 
   def edit
     logger.debug "Trying to edit a segment with id: #{ @segment.id }"
+    @text_queries_contact_arguments = TextQuery::VALID_CONTACT_ARGUMENTS
+    @numeric_queries_contact_arguments = NumericQuery::VALID_CONTACT_ARGUMENTS
   end
 
   def create

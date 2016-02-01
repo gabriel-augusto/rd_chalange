@@ -4,6 +4,7 @@ class ContactsController < ApplicationController
   def index
     begin
       logger.debug "Trying to get the Contact tables from the database"
+      # get all contacts from the database
       @contacts = Contact.all
       logger.info "Success getting all the contacts from the database"
       logger.debug "Rendering the Contacts index view"
