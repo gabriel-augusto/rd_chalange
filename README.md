@@ -1,30 +1,35 @@
-== README
+#README [![Code Climate](https://codeclimate.com/github/gabriel-augusto/rd_chalange/badges/gpa.svg)](https://codeclimate.com/github/gabriel-augusto/rd_chalange)      [![Test Coverage](https://codeclimate.com/github/gabriel-augusto/rd_chalange/badges/coverage.svg)](https://codeclimate.com/github/gabriel-augusto/rd_chalange/coverage)     [![Build Status](https://travis-ci.org/gabriel-augusto/rd_chalange.svg?branch=master)](https://travis-ci.org/gabriel-augusto/rd_chalange)
 
-{<img src="https://codeclimate.com/github/gabriel-augusto/rd_chalange/badges/gpa.svg" />}[https://codeclimate.com/github/gabriel-augusto/rd_chalange]   {<img src="https://travis-ci.org/gabriel-augusto/rd_chalange.svg?branch=devel" alt="Build Status" />}[https://travis-ci.org/gabriel-augusto/rd_chalange]   {<img src="https://codeclimate.com/github/gabriel-augusto/rd_chalange/badges/coverage.svg" />}[https://codeclimate.com/github/gabriel-augusto/rd_chalange/coverage]
+##About
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This application is a test proposed by the Resultados Digitais company. It's a Ruby on Rails application that segments a list of contacts based in the parameters sugested by the user. It's possible to maintain contacts and segments.
 
-Things you may want to cover:
+##Build application
 
-* Ruby version
+###Requirements
 
-* System dependencies
+* Ruby ~> 2.2.1
+* Rails ~> 4.2.5.1
 
-* Configuration
+###Install
 
-* Database creation
+```bundle install --without production```
 
-* Database initialization
+```rake db:migrate```
 
-* How to run the test suite
+###Run application
 
-* Services (job queues, cache servers, search engines, etc.)
+```rails server```
 
-* Deployment instructions
+The application will be available at ```localhost:3000```
 
-* ...
+###Run tests
 
+At the application directory...
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Run all tests: ```rspec```
+
+Run separated test file: ```rspec spec/directoryname/filename```
+
+##Heroku
+This aplication is available at [heroku](rdchallenge.herokuapp.com)
