@@ -24,7 +24,7 @@ RSpec.describe SegmentsController, type: :controller do
   # Segment. As you add validations to Segment, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {title: "asdfdsa"}
   }
 
   let(:invalid_attributes) {

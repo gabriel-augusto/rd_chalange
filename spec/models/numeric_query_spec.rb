@@ -28,6 +28,33 @@ RSpec.describe NumericQuery, type: :model do
         @query_group.save
       }.to change(NumericQuery, :count).by(1)
     end
+
+    it 'should convert year correctly' do
+      age = 15
+      date_to_compare = @numeric_query.age_to_datetime(age)
+      correct_date = age.years.ago.strftime("%m/%d/%Y")
+      expect(date_to_compare.strftime("%m/%d/%Y")). to be == correct_date
+    end
+
+    it 'should return correct database table column name' do
+      contact_argument = "Age"
+      response = @numeric_query.find_table_column_name(contact_argument)
+      expected_response = "date_of_birth"
+      expect(response).to be == expected_response
+    end
+
+    it 'should return an valid query string' do
+      valid_contact_argument = "Age" # valid
+      valid_min_value = NumericQuery::MIN_LIMIT
+      valid_max_value = NumericQuery::MAX_LIMIT
+      @numeric_query.contact_argument = valid_contact_argument
+      @numeric_query.min_value = valid_min_value
+      @numeric_query.max_value = valid_max_value
+
+      expected_date_limit_up = DateTime.now
+      expected_string_to_min_value = " LIKE '#{valid_value_to_compare}%'"
+      expect(text_query.to_s).to be == expected_string
+    end
   end
 
   context 'When providing invalid data' do
@@ -59,6 +86,13 @@ RSpec.describe NumericQuery, type: :model do
       invalid_max_value = NumericQuery::MAX_LIMIT + 1
       @numeric_query.max_value = invalid_max_value
       expect(@numeric_query).not_to be_valid
+    end
+
+    it 'should raise an error with wrong contact argument value' do
+      invalid_contact_argument = "Date" # Invalid
+      expect{
+        @numeric_query.find_table_column_name(invalid_contact_argument)
+      }.to raise_error
     end
 
     it 'should not be saved in the database' do

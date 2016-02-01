@@ -5,7 +5,7 @@
   <%= @segment.title %>
 </p>
 
-<table>
+<table class="table table-striped">
   <thead>
   <tr>
     <th>Name</th>
@@ -27,11 +27,11 @@
         <td><%= contact.position %></td>
         <td><%= link_to 'Show', contact, class: "btn btn-md btn-default" %></td>
         <td><%= link_to 'Edit', edit_contact_path(contact), class: "btn btn-md btn-default" %></td>
-        <td><%= link_to 'Destroy',
+        <td><%= link_to 'Delete',
                         contact,
                         method: :delete,
                         data: { confirm: 'Are you sure?' },
-                        class: "btn btn-md btn-default" %>
+                        class: "btn btn-md btn-danger" %>
         </td>
       </tr>
   <% end %>

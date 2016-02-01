@@ -28,6 +28,15 @@ RSpec.describe TextQuery, type: :model do
         @query_group.save
       }.to change(TextQuery, :count).by(1)
     end
+
+    it 'should return an valid query string' do
+      valid_contact_argument = 'Name' #valid
+      valid_value_to_compare = 'a'*TextQuery::VALUE_TO_COMPARE_MIN_LENGTH
+      @text_query.contact_argument = valid_contact_argument
+      @text_query.value_to_compare = valid_value_to_compare
+      expected_string = "name LIKE '#{valid_value_to_compare}%'"
+      expect(text_query.to_s).to be == expected_string
+    end
   end
 
   context 'When providing invalid data' do
