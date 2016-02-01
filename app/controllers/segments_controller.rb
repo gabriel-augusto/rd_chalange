@@ -1,5 +1,5 @@
 class SegmentsController < ApplicationController
-  before_action :set_segment, only: [:show, :edit, :update, :destroy]
+  before_action :set_segment, only: [:show, :edit, :update, :destroy, :build_query]
 
   def index
     begin
@@ -44,6 +44,7 @@ class SegmentsController < ApplicationController
 
     respond_to do |format|
       if @segment.save
+        @segment.update_contacts
         # If it is ok, go to the segments page and display a success message
         logger.info "Success creating and saving a new Segment in the database, id: #{ @segment.id }"
         format.html { redirect_to @segment, notice: 'Segment was successfully created.' }
@@ -62,6 +63,7 @@ class SegmentsController < ApplicationController
     logger.debug "Trying to update a segment with id: #{ @segment. id }"
     respond_to do |format|
       if @segment.update(segment_params)
+        @segment.update_contacts
         # If it is ok, go to the segment page and display a success message
         logger.info "Success saving modifications to Segment, id: #{ @segment.id }"
         format.html { redirect_to @segment, notice: 'Segment was successfully updated.' }

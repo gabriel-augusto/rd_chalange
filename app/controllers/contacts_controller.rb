@@ -1,5 +1,5 @@
 class ContactsController < ApplicationController
-  before_action :set_contact, only: [:show, :edit, :update, :destroy]
+  before_action :set_contact, only: [:show, :edit, :update, :destroy, :update_segments]
 
   def index
     begin
@@ -45,6 +45,7 @@ class ContactsController < ApplicationController
 
     respond_to do |format|
       if @contact.save
+        update_segments
         # If it is ok, go to the contacts page and display a success message
         logger.info "Success creating and saving a new Contact in the database, id: #{ @contact.id }"
         format.html { redirect_to @contact, notice: 'Contact was successfully created.' }
@@ -63,6 +64,7 @@ class ContactsController < ApplicationController
     logger.debug "Trying to update a contact with id: #{ @contact. id }"
     respond_to do |format|
       if @contact.update(contact_params)
+        update_segments
         # If it is ok, go to the contact page and display a success message
         logger.info "Success saving modifications to Contact, id: #{ @contact.id }"
         format.html { redirect_to @contact, notice: 'Contact was successfully updated.' }
@@ -87,6 +89,13 @@ class ContactsController < ApplicationController
   end
 
   private
+    def update_segments
+      segments = Segment.all
+      segments.each do |segment|
+        segment.update_contacts
+      end
+    end
+
     def set_contact
       @contact = Contact.find(params[:id])
     end
