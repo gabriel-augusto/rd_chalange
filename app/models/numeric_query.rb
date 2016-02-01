@@ -19,4 +19,11 @@ class NumericQuery < ActiveRecord::Base
                             less_than_or_equal_to: MAX_LIMIT,
                             greater_than_or_equal_to: :min_value,
                             only_integer: true
+
+  def to_s
+    search_limit_up = "#{contact_argument.downcase} <= #{max_value}"
+    search_limit_down = "#{contact_argument.downcase} >= #{min_value}"
+    return search_limit_up + " AND " + search_limit_down
+  end
+
 end
