@@ -14,8 +14,8 @@ RSpec.describe TextQuery, type: :model do
 
     it 'should be saved in the database' do
       expect{
-        segment = create_valid_segment_scenario
-        segment.save
+        text_query = create_text_query
+        text_query.save
       }.to change(TextQuery, :count).by(1)
     end
 
@@ -25,7 +25,8 @@ RSpec.describe TextQuery, type: :model do
 
     it 'should increase the database' do
       expect {
-        @query_group.save
+        text_query = create_text_query
+        text_query.save
       }.to change(TextQuery, :count).by(1)
     end
 
@@ -35,7 +36,7 @@ RSpec.describe TextQuery, type: :model do
       @text_query.contact_argument = valid_contact_argument
       @text_query.value_to_compare = valid_value_to_compare
       expected_string = "name LIKE '#{valid_value_to_compare}%'"
-      expect(text_query.to_s).to be == expected_string
+      expect(@text_query.to_s).to be == expected_string
     end
   end
 
@@ -72,11 +73,6 @@ RSpec.describe TextQuery, type: :model do
         })
         text_query.save
       }.to change(TextQuery, :count).by(0)
-    end
-
-    it 'should not be valid without a group' do
-      text_query = create_text_query
-      expect(text_query).not_to be_valid
     end
   end
 end

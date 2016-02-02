@@ -25,15 +25,18 @@ RSpec.describe NumericQuery, type: :model do
 
     it 'should increase the database' do
       expect {
-        @query_group.save
+        new_numeric_query = create_numeric_query
+        new_numeric_query.save
       }.to change(NumericQuery, :count).by(1)
     end
 
     it 'should convert year correctly' do
       age = 15
       date_to_compare = @numeric_query.age_to_datetime(age)
-      correct_date = age.years.ago.strftime("%m/%d/%Y")
-      expect(date_to_compare.strftime("%m/%d/%Y")). to be == correct_date
+      year_to_compare = DateTime.now.year - age
+      correct_date = DateTime.now.change(year: year_to_compare)
+      correct_date_str = correct_date.strftime("%m/%d/%Y")
+      expect(date_to_compare.strftime("%m/%d/%Y")). to be == correct_date_str
     end
 
     it 'should return correct database table column name' do
@@ -51,9 +54,8 @@ RSpec.describe NumericQuery, type: :model do
       @numeric_query.min_value = valid_min_value
       @numeric_query.max_value = valid_max_value
 
-      expected_date_limit_up = DateTime.now
-      expected_string_to_min_value = " LIKE '#{valid_value_to_compare}%'"
-      expect(text_query.to_s).to be == expected_string
+      query_regex = /\A([A-Za-z_]+\s[<=>]{1,2}\s'[0-9-]+T[0-9:]+-[0-9:]+%'|\sAND\s){3}\z/
+      expect(@numeric_query.to_s).to match(query_regex)
     end
   end
 
@@ -106,11 +108,6 @@ RSpec.describe NumericQuery, type: :model do
             })
         numeric_query.save
       }.to change(NumericQuery, :count).by(0)
-    end
-
-    it "should not be valid without a group" do
-      numeric_query = create_numeric_query
-      expect(numeric_query).not_to be_valid
     end
   end
 end

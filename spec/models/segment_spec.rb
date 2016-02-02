@@ -23,6 +23,15 @@ RSpec.describe Segment, type: :model do
       @segment.title = valid_title
       expect(@segment).to be_valid
     end
+
+    it 'should return an valid query string' do
+      text_query = TextQuery.new(contact_argument: "position", value_to_compare: "student")
+      group = Group.new
+      group.text_queries << text_query
+      @segment.groups << group
+      expected_string = "#{@group.to_s} OR #{group.to_s}"
+      expect(@segment.to_s).to be == expected_string
+    end
   end
 
   context 'When providing invalid data' do
@@ -52,11 +61,6 @@ RSpec.describe Segment, type: :model do
         )
         segment.save
       }.to change(Segment, :count).by(0)
-    end
-
-    it 'should not be valid without a group' do
-      segment = create_segment
-      expect(segment).not_to be_valid
     end
   end
 end

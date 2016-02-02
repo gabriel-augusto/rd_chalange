@@ -46,7 +46,7 @@ class NumericQuery < ActiveRecord::Base
       VALID_DATABASE_CONTACT_ARGUMENTS.key(contact_argument).to_s
     else
       raise QueryErrors::InvalidQueryArgument, "Invalid Contact Argument: #{contact_argument}"
-    end
+   end
   end
 
   def age_to_datetime(age)
