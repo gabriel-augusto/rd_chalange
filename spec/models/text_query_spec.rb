@@ -14,8 +14,8 @@ RSpec.describe TextQuery, type: :model do
 
     it 'should be saved in the database' do
       expect{
-        segment = create_valid_segment_scenario
-        segment.save
+        text_query = create_text_query
+        text_query.save
       }.to change(TextQuery, :count).by(1)
     end
 
