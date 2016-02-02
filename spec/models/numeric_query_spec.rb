@@ -54,7 +54,7 @@ RSpec.describe NumericQuery, type: :model do
       @numeric_query.min_value = valid_min_value
       @numeric_query.max_value = valid_max_value
 
-      query_regex = /\A([A-Za-z_]+\s[<=>]{1,2}\s'[0-9-]+T[0-9:]+-[0-9:]+%'|\sAND\s){3}\z/
+      query_regex = /\A([A-Za-z_]+\s[<=>]{1,2}\s'[0-9-]+T([0-9:]|\D)+[0-9:]+%'|\sAND\s){3}\z/
       expect(@numeric_query.to_s).to match(query_regex)
     end
   end
