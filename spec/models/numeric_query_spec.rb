@@ -109,10 +109,5 @@ RSpec.describe NumericQuery, type: :model do
         numeric_query.save
       }.to change(NumericQuery, :count).by(0)
     end
-
-    it "should not be valid without a group" do
-      numeric_query = create_numeric_query
-      expect(numeric_query).not_to be_valid
-    end
   end
 end
