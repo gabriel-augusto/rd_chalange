@@ -32,4 +32,4 @@ Run all tests: ```rspec```
 Run separated test file: ```rspec spec/directoryname/filename```
 
 ##Heroku
-This aplication is available at [heroku](rdchallenge.herokuapp.com)
+This aplication is available at [heroku](https://rdchallenge.herokuapp.com)
