@@ -17,6 +17,7 @@ class Group < ActiveRecord::Base
         query += " AND "
       end
     end
+    query += " AND " unless text_queries.empty? or self.numeric_queries.empty?
     self.numeric_queries.each do |numeric_query|
       query += numeric_query.to_s
       unless self.numeric_queries.last == numeric_query
