@@ -47,7 +47,14 @@ RSpec.describe NumericQuery, type: :model do
     end
 
     it 'should return an valid query string' do
-      query_regex = /\A([A-Za-z_]+\s[<=>]{1,2}\s'[0-9-]+T[0-9:]+-[0-9:]+%'|\sAND\s){3}\z/
+      valid_contact_argument = "Age" # valid
+      valid_min_value = NumericQuery::MIN_LIMIT
+      valid_max_value = NumericQuery::MAX_LIMIT
+      @numeric_query.contact_argument = valid_contact_argument
+      @numeric_query.min_value = valid_min_value
+      @numeric_query.max_value = valid_max_value
+
+      query_regex = /\A([A-Za-z_]+\s[<=>]{1,2}\s'[0-9-]+T([0-9:]|\D)+[0-9:]+%'|\sAND\s){3}\z/
       expect(@numeric_query.to_s).to match(query_regex)
     end
   end
