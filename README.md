@@ -1,4 +1,4 @@
-#README [[![Code Climate](https://codeclimate.com/github/gabriel-augusto/rd_challenge/badges/gpa.svg)](https://codeclimate.com/github/gabriel-augusto/rd_challenge)      [![Test Coverage](https://codeclimate.com/github/gabriel-augusto/rd_challenge/badges/coverage.svg)](https://codeclimate.com/github/gabriel-augusto/rd_challenge/coverage)     [![Build Status](https://travis-ci.org/gabriel-augusto/rd_challenge.svg?branch=master)](https://travis-ci.org/gabriel-augusto/rd_challenge)
+#README [![Code Climate](https://codeclimate.com/github/gabriel-augusto/rd_challenge/badges/gpa.svg)](https://codeclimate.com/github/gabriel-augusto/rd_challenge)      [![Test Coverage](https://codeclimate.com/github/gabriel-augusto/rd_challenge/badges/coverage.svg)](https://codeclimate.com/github/gabriel-augusto/rd_challenge/coverage)     [![Build Status](https://travis-ci.org/gabriel-augusto/rd_challenge.svg?branch=master)](https://travis-ci.org/gabriel-augusto/rd_challenge)
 
 ##About
 
